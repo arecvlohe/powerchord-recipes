@@ -1,11 +1,13 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
+var dirname = path.resolve(__dirname, '..');
 
 module.exports = {
-  entry:  __dirname + '/src/client/main.js',
+  entry:  dirname + '/src/client/main.js',
   output: {
-    path: __dirname + '/build',
+    path: dirname + '/build',
     filename: '[name]-[hash].js',
   },
   module: {
@@ -27,12 +29,12 @@ module.exports = {
   postcss: [
     require('autoprefixer'),
   ],
-  plugins: [
+  plugins: process.env.NODE_ENV === 'production' ? [
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/client/index.tmpl.html',
+      template: dirname + '/src/client/index.tmpl.html',
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin('[name]-[hash].css'),
-  ],
+  ] : [],
 };

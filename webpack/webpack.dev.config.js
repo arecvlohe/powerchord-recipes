@@ -1,11 +1,13 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var dirname = path.resolve(__dirname, '..');
 
 module.exports = {
   devtool: 'eval-source-map',
-  entry:  __dirname + '/src/client/main.js',
+  entry:  dirname + '/src/client/main.js',
   output: {
-    path: __dirname + '/build',
+    path: dirname + '/build',
     filename: 'bundle.js',
   },
   module: {
@@ -29,7 +31,7 @@ module.exports = {
   ],
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/client/index.tmpl.html',
+      template: dirname + '/src/client/index.tmpl.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

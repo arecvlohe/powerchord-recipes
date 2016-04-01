@@ -4,9 +4,8 @@
   "description": "Simple Recipes App",
   "scripts": {
     "start": "npm run start:dev",
-    "clean": "rm -r ./build/*",
-    "start:dev":"NODE_ENV=development webpack-dev-server --config ./webpack.dev.config.js --progress",
-    "start:prod": "NODE_ENV=production && webpack --config ./webpack.prod.config.js --progress && node babel.server.js",
+    "start:dev":"NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.config.js --progress",
+    "start:prod": "NODE_ENV=production webpack --define process.env.NODE_ENV='\"production\"' --config ./webpack/webpack.prod.config.js --progress && node babel.server.js",
     "test": "NODE_ENV=test mocha './test/*.spec.js' --compilers js:babel-core/register",
     "test:watch": "npm test -- -w"
   },
