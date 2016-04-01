@@ -37,7 +37,7 @@ class UpdateRecipe extends Component {
           ref='description'/>
         <select
           multiple={true}
-          value={[]}
+          value={['']}
           style={styles.select}>
           {ingredients.map((ingredient, index) =>
             <option
