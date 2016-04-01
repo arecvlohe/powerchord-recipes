@@ -34,7 +34,11 @@ module.exports = {
       template: dirname + '/src/client/index.tmpl.html',
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    }),
     new ExtractTextPlugin('[name]-[hash].css'),
   ] : [],
 };
