@@ -3,9 +3,7 @@ import Recipe from './Recipe';
 
 class RecipesList extends Component {
   render() {
-
-    const { store } = this.context;
-    const { recipes } = store.getState();
+    const { recipes } = this.context.store.getState();
     return (
       <div style={styles.main}>
         {recipes.map((recipe, index) =>
