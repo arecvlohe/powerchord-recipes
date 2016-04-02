@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Header from './Header';
+import Ingredient from './Ingredient';
 
 class UpdateRecipe extends Component {
 
@@ -48,20 +49,19 @@ class UpdateRecipe extends Component {
           )}
         </select>
         <div style={styles.ingredients}>
-          {selected.map((item, index) =>
-            <div
+          {selected.map((ingredient, index) =>
+            <Ingredient
               key={index}
-              style={styles.item}
-              onClick={(e) => this.handleDeleteIngredient(e) }>
-              {item}
-            </div>
+              index={index}
+              onDeleteClick={index => this.handleDeleteIngredient(index)}
+              ingredient={ingredient}/>
           )}
         </div>
         <Link
           to='/'
           style={styles.button}
           onClick={() =>  this.handleUpdateRecipe()}>
-          Update
+          Save
         </Link>
         <Link
           style={styles.btnBack}
@@ -79,10 +79,9 @@ class UpdateRecipe extends Component {
     this.setState({ ingredients: newArr });
   }
 
-  handleDeleteIngredient(e) {
-    const value = e.target.innerHTML;
+  handleDeleteIngredient(index) {
     const newArr = this.state.ingredients.slice();
-    const filtered = newArr.filter(item => item !== value);
+    const filtered = newArr.filter((itm, idx) => idx != index);
     this.setState({ ingredients: filtered });
   }
 
@@ -142,10 +141,6 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     cursor: 'pointer',
-  },
-  item: {
-    display: 'flex',
-    justifyContent: 'space-between',
   },
   button: {
     alignSelf: 'flex-start',

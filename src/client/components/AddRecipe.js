@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { Link, Redirect } from 'react-router';
 import Header from './Header';
+import Ingredient from './ingredient';
 
 class AddRecipe extends Component {
 
@@ -41,20 +42,19 @@ class AddRecipe extends Component {
           )}
         </select>
         <div style={styles.ingredients}>
-          {selected.map((item, index) =>
-            <div
+          {selected.map((ingredient, index) =>
+            <Ingredient
               key={index}
-              style={styles.item}
-              onClick={(e) => this.handleDeleteIngredient(e) }>
-              {item}
-            </div>
+              index={index}
+              ingredient={ingredient}
+              onDeleteClick={index => this.handleDeleteIngredient(index) }/>
           )}
         </div>
         <Link
           to='/'
           style={styles.button}
           onClick={() =>  this.handleAddRecipe()}>
-          Add
+          Save
         </Link>
         <Link
           to='/'
@@ -72,10 +72,9 @@ class AddRecipe extends Component {
     this.setState({ ingredients: newArr });
   }
 
-  handleDeleteIngredient(e) {
-    const value = e.target.innerHTML;
+  handleDeleteIngredient(index) {
     const newArr = this.state.ingredients.slice();
-    const filtered = newArr.filter(item => item !== value);
+    const filtered = newArr.filter((_, idx) => idx !== index);
     this.setState({ ingredients: filtered });
   }
 
