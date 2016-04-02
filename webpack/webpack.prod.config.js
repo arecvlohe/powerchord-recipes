@@ -5,6 +5,7 @@ var path = require('path');
 var dirname = path.resolve(__dirname, '..');
 
 module.exports = {
+  devtool: 'eval',
   entry:  dirname + '/src/client/main.js',
   output: {
     path: dirname + '/build',
