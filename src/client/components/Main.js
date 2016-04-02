@@ -16,7 +16,6 @@ class Main extends Component {
   }
 
   render() {
-    const { store } = this.context;
     return (
       <div style={styles.main}>
         <Header />
