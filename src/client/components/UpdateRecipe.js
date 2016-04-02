@@ -20,7 +20,7 @@ class UpdateRecipe extends Component {
   render() {
     const { recipes } = this.context.store.getState();
     const recipe = recipes.filter(recipe => recipe.id == this.props.params.id)[0];
-    const ingredients = ['Flour', 'Eggs', 'Grits', 'Bacon', 'Syrup', 'Hashbrowns'];
+    const ingredients = ['Flour', 'Eggs', 'Butter', 'Blueberries'];
     const selected = this.state.ingredients;
     return (
       <div style={styles.main}>
@@ -36,8 +36,7 @@ class UpdateRecipe extends Component {
           placeholder={recipe.description}
           ref='description'/>
         <select
-          multiple={true}
-          value={['']}
+          value={''}
           style={styles.select}>
           {ingredients.map((ingredient, index) =>
             <option

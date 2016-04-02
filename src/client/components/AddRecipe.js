@@ -13,7 +13,7 @@ class AddRecipe extends Component {
   }
 
   render() {
-    const ingredients = ['Flour', 'Eggs', 'Grits', 'Bacon', 'Syrup', 'Hashbrowns'];
+    const ingredients = ['Flour', 'Eggs', 'Butter', 'Blueberries'];
     const  selected = this.state.ingredients;
     return (
       <div style={styles.main}>
@@ -29,8 +29,7 @@ class AddRecipe extends Component {
           placeholder='Description'
           ref='description'/>
         <select
-          multiple={true}
-          value={['']}
+          value={''}
           style={styles.select}>
           {ingredients.map((ingredient, index) =>
             <option
