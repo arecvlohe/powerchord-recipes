@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
-import color from 'color';
 import { Link } from 'react-router';
 import Header from './Header';
 import RecipesList from './RecipesList';
