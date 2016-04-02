@@ -3,15 +3,32 @@ import * as types from '../constants/ActionTypes';
 const initialState = [
   {
     id: 0,
-    title: 'Scrambled Eggs',
-    description: 'Good scrambled eggs',
-    ingredients: ['Eggs', 'Cheese', 'Peppers', 'Onions'],
+    title: 'Mediterranean Greek Salad',
+    description: 'A simple Greek salad recipe',
+    ingredients: [
+      'Cucumbers',
+      'Feta Cheese',
+      'Black Olives',
+      'Diced Roma Tomatoes',
+      'Red Onion',
+      'Olive Oil',
+      'Red Wine Vinegar',
+    ],
   },
   {
     id: 1,
-    title: 'Toast',
-    description: 'Nothin better than burnt toast',
-    ingredients: ['Toast', 'Milk', 'Orange Juice', 'Porage'],
+    title: 'Authentic Caesar Dressing',
+    description: 'Traditional caesar dressing recipe',
+    ingredients: [
+      'Anchovies',
+      'Garlic',
+      'Lemon',
+      'Egg Yolk',
+      'Dijon Mustard',
+      'Worcestershire Sauce',
+      'Olive Oil',
+      'Parmesan Cheese',
+    ],
   },
 ];
 
