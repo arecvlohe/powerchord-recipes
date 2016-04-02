@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { Link, Redirect } from 'react-router';
 import Header from './Header';
-import Ingredient from './ingredient';
+import Ingredient from './Ingredient';
 
 class AddRecipe extends Component {
 

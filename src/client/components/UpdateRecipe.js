@@ -61,7 +61,7 @@ class UpdateRecipe extends Component {
           to='/'
           style={styles.button}
           onClick={() =>  this.handleUpdateRecipe()}>
-          Save
+          Update
         </Link>
         <Link
           style={styles.btnBack}
