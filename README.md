@@ -10,4 +10,4 @@ After you have all dependencies installed you can run any number of commands:
 - `npm run start:prod` - will run the app in production
 - `npm run test` - will run the tests in test
 
-![PowerChord App](powerchord-recipes.png)
+![PowerChord App](powerchord-recipes-app.png)
