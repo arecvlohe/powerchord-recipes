@@ -32,7 +32,7 @@ module.exports = {
   ],
   plugins: process.env.NODE_ENV === 'production' ? [
     new HtmlWebpackPlugin({
-      template: dirname + '/src/client/index.tmpl.html',
+      template: dirname + '/src/client/index.html',
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
