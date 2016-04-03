@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import ContentEditable from 'react-contenteditable';
 import Header from './Header';
 import Ingredient from './Ingredient';
 
@@ -8,12 +9,18 @@ class UpdateRecipe extends Component {
   componentWillMount() {
     const { recipes } = this.context.store.getState();
     const recipe = recipes.filter(recipe => recipe.id == this.props.params.id)[0];
-    this.setState({ ingredients: recipe.ingredients });
+    this.setState({
+      title: `<div>${recipe.title}</div>`,
+      description: `<div>${recipe.description}</div>`,
+      ingredients: recipe.ingredients,
+    });
   }
 
   constructor(props) {
     super(props);
     this.state = {
+      title: '',
+      description: '',
       ingredients: [],
     };
   }
@@ -26,16 +33,16 @@ class UpdateRecipe extends Component {
     return (
       <div style={styles.main}>
         <Header />
-        <input
-          style={styles.input}
-          type='text'
-          placeholder={recipe.title}
-          ref='title' />
-        <input
-          style={styles.input}
-          type='text'
-          placeholder={recipe.description}
-          ref='description'/>
+        <ContentEditable
+          html={this.state.title}
+          style={styles.contentEditable}
+          disabled={false}
+          onChange={e => this.handleUpdateTitle(e)}/>
+        <ContentEditable
+          html={this.state.description}
+          style={styles.contentEditable}
+          disabled={false}
+          onChange={e => this.handleUpdateDescription(e)}/>
         <select
           value={''}
           style={styles.select}>
@@ -72,6 +79,14 @@ class UpdateRecipe extends Component {
     );
   }
 
+  handleUpdateTitle(e) {
+    this.setState({ title: e.target.value });
+  }
+
+  handleUpdateDescription(e) {
+    this.setState({ description: e.target.value });
+  }
+
   handleAddIngredient(e) {
     const value = e.target.value;
     const newArr = this.state.ingredients.slice() || [];
@@ -86,20 +101,15 @@ class UpdateRecipe extends Component {
   }
 
   handleUpdateRecipe() {
-    const { recipes } = this.context.store.getState();
-    const recipe = recipes.filter(recipe => recipe.id == this.props.params.id)[0];
+    const title = this.state.title.replace(/<\/?div>/g, '');
+    const description = this.state.description.replace(/<\/?div>/g, '');
     this.context.store.dispatch({
       type: 'UPDATE_RECIPE',
       id: Number(this.props.params.id),
-      title: this.refs.title.value || recipe.title,
-      description: this.refs.description.value || recipe.description,
+      title: title,
+      description: description,
       ingredients: this.state.ingredients,
     });
-    const fields = ['title', 'description'];
-    fields.forEach(field => {
-      this.refs[field].value = '';
-    });
-    this.setState({ ingredients: [] });
   }
 }
 
@@ -116,7 +126,7 @@ const styles = {
     width: 600,
     margin: '0 auto',
   },
-  input: {
+  contentEditable: {
     minWidth: 600,
     fontFamily: 'Source Sans Pro',
     fontSize: 16,
@@ -125,6 +135,7 @@ const styles = {
     paddingBottom: 2,
     paddingTop: 10,
     marginBottom: 10,
+    outline: 0,
   },
   select: {
     alignSelf: 'flex-start',
