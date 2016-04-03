@@ -13,7 +13,7 @@ const rootEl = document.getElementById('root');
 
 render((
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
       <Route path='/' component={Main} />
       <Route path='/add' component={AddRecipe} />
       <Route path='/edit' component={UpdateRecipe} >
