@@ -18,7 +18,7 @@ const initialState = [
   {
     id: 1,
     title: 'Authentic Caesar Dressing',
-    description: 'Traditional caesar dressing recipe',
+    description: 'Traditional Caesar dressing recipe',
     ingredients: [
       'Anchovies',
       'Garlic',
