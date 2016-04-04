@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router';
+import { Link } from 'react-router';
 import Header from './Header';
 import Ingredient from './Ingredient';
 
