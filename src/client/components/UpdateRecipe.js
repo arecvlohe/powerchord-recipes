@@ -51,7 +51,6 @@ class UpdateRecipe extends Component {
           {ingredients.map((ingredient, index) =>
             <option
               key={index}
-
               value={ingredient}>
               {ingredient}
             </option>
