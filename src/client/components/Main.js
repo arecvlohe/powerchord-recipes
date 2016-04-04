@@ -55,10 +55,6 @@ const styles = {
     border: '1px solid black',
     cursor: 'pointer',
     fontSize: 16,
-    ':hover': {
-      backgroundColor: 'black',
-      color: 'white',
-    },
   },
 };
 
