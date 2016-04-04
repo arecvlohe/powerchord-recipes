@@ -44,12 +44,14 @@ class UpdateRecipe extends Component {
           disabled={false}
           onChange={e => this.handleUpdateDescription(e)}/>
         <select
-          value={''}
-          style={styles.select}>
+          value={'prompt'}
+          style={styles.select}
+          onChange={(e) => this.handleAddIngredient(e)}>
+          <option value='prompt' disabled>-- Select Ingredient --</option>
           {ingredients.map((ingredient, index) =>
             <option
               key={index}
-              onClick={(e) => this.handleAddIngredient(e)}
+
               value={ingredient}>
               {ingredient}
             </option>
